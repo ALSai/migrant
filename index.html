@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>The "migrant" app</title>
+  <meta name="description" content="">
+  <meta name="author" content="Simon "ALSimon" Gilliot">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="stylesheet" href="libraries/frameworks/revealjs/css/reveal.min.css">
+  <link rel="stylesheet" href="libraries/frameworks/revealjs/css/theme/default.css" id="theme">
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/pojoaque.css" id="theme">
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->  <link rel="stylesheet" href = "assets/css/ribbons.css">
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <section class='' data-state='' id='slide-1'>
+  <h1>The &quot;migrant&quot; app</h1>
+  <h3>Presentation of the shiny application</h3>
+
+<p><small>Created by Simon &quot;ALSimon&quot; Gilliot.</small></p>
+
+</section>
+<section class='' data-state='' id='slide-2'>
+  <h2>What the app does?</h2>
+  <p>The &quot;migrant&quot; application shows statistics about refugee&#39;s status decisions :</p>
+
+<ul>
+<li>per migrant profile,</li>
+<li>per destination country (in Europe).</li>
+</ul>
+
+<p>The application can show :</p>
+
+<ul>
+<li>people askings for a refugee&#39;s status with final decision,</li>
+<li>percentage of decision.</li>
+</ul>
+
+</section>
+<section class='' data-state='' id='slide-3'>
+  <h2>How it works?</h2>
+  <p>The &quot;migrant&quot; application collect inputs from the &quot;Migrant&#39;s profile&quot; panel. You have to select :</p>
+
+<ul>
+<li>the sex of the migrant,</li>
+<li>the age of the migrant,</li>
+<li>the origin (citizenship) of the migrant.</li>
+</ul>
+
+<p>Results appears on a stacked bar plot. It shows you :</p>
+
+<ul>
+<li>people (on the Y axis),</li>
+<li>concerned by a decision (colored bar),</li>
+<li>per countries (on the X axis).</li>
+</ul>
+
+<p>You can see percentage of decision (on the Y axis) by clicking on the &quot;Percentage&quot; tab on the top of the graph.</p>
+
+</section>
+<section class='' data-state='' id='slide-4'>
+  <h2>Where do the data come from?</h2>
+  <p>All data come from <a href="http://ec.europa.eu/eurostat/">Eurostat</a>.</p>
+
+<p>The database used in this application is &quot;migr_asydcfina&quot;. Some informations can be found on these <a href="http://ec.europa.eu/eurostat/cache/metadata/fr/migr_asydec_esms.htm">metadata</a>. It can also be explored using eurostat <a href="http://ec.europa.eu/eurostat/web/asylum-and-managed-migration/data/database">data explorer</a>.</p>
+
+<pre><code class="r">library(eurostat)
+dataset &lt;- get_eurostat(&quot;migr_asydcfina&quot;)
+</code></pre>
+
+<p>In this database, there are 9,295,741 rows with :</p>
+
+<ul>
+<li>206 different origins,</li>
+<li>34 different destinations,</li>
+<li>7 different years (from 2008 to 2014).</li>
+</ul>
+
+<p>Only data from 2014 are used in this application.</p>
+
+</section>
+<section class='' data-state='' id='slide-5'>
+  <h2>Want more?</h2>
+  <p>About the application itself :</p>
+
+<ul>
+<li><a href="https://alsai.shinyapps.io/migrant">the application</a></li>
+<li><a href="https://github.com/ALSai/migrant">the source code</a></li>
+</ul>
+
+<p>More details about migrants coming to Europe can be found on :</p>
+
+<ul>
+<li><a href="http://www.unhcr.org/">UNHCR</a></li>
+<li><a href="http://www.ecre.org/">ECRE</a></li>
+<li><a href="http://www.asylumineurope.org/">asyliumeurope.org</a></li>
+<li><a href="http://ec.europa.eu/eurostat">eurostat</a></li>
+</ul>
+
+<p>Coming soon, my website about this subject :</p>
+
+<ul>
+<li><a href="http://migrants.guide">migrants.guide</a></li>
+</ul>
+
+</section>
+    </div>
+  </div>
+</body>
+  <script src="libraries/frameworks/revealjs/lib/js/head.min.js"></script>
+  <script src="libraries/frameworks/revealjs/js/reveal.min.js"></script>
+  <script>
+  // Full list of configuration options available here:
+  // https://github.com/hakimel/reveal.js#configuration
+  Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+    theme: Reveal.getQueryHash().theme || 'default', 
+    transition: Reveal.getQueryHash().transition || 'convex', 
+    dependencies: [
+    // Cross-browser shim that fully implements classList -
+    // https://github.com/eligrey/classList.js/
+      { src: 'libraries/frameworks/revealjs/lib/js/classList.js', condition: function() { return !document.body.classList;}},
+      // Zoom in and out with Alt+click
+      { src: 'libraries/frameworks/revealjs/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+      // Speaker notes
+      { src: 'libraries/frameworks/revealjs/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+      // Remote control your reveal.js presentation using a touch device
+      //{ src: 'libraries/frameworks/revealjs/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+      ]
+  });
+  </script>  <!-- LOAD HIGHLIGHTER JS FILES -->
+<script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!-- DONE LOADING HIGHLIGHTER JS FILES -->
+ 
+
+</html>
